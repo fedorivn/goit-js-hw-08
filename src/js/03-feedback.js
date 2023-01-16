@@ -1,59 +1,58 @@
 
 import throttle from 'lodash.throttle'
 
-let inputData =
+const emailInput = document.querySelector('[name="email"]')
+const textareaInput = document.querySelector('[name="message"]')
+
+let inputData = JSON.parse(localStorage.getItem('feedback-form-sate'))||
 {
     email: '',
     message:'',
 }
 
+
+
 const formEl = document.querySelector('.feedback-form')
+
 
 function inputHandler (event){
     event.preventDefault();
+    
+    
     inputData[event.target.name]=event.target.value
     localStorage.setItem("feedback-form-sate",JSON.stringify(inputData)) 
+   console.log(' -->',  inputData[event.target.name]);
+   
 }
+
 formEl.addEventListener('input', throttle(inputHandler, 500))
-    
-    
 
-function localStorageDataSet (){
-    if (localStorage("feedback-form-sate") === undefined){
-        return
-    }
-    else {inputData[event.target.name]
-
-    }
-}
+const handleDomLoaded = () => {
+const localStorageDataSet = 
+JSON.parse(localStorage.getItem('feedback-form-sate'))
 
 
-// let inputData =
-// {
-//     email: '',
-//     message:'',
-// }
-// const formEl = document.querySelector('.feedback-form')
-// const emailDataEl = document.querySelector('[name="email"]')
-// const messageDataEl = document.querySelector('[name="message"]')
+
+if (localStorageDataSet) {
+emailInput.value = localStorageDataSet.email
+textareaInput.value =localStorageDataSet.message || ''
+
+}}
 
 
-// emailDataEl.addEventListener('input', e => {inputData.email =e.target.value})
-// messageDataEl.addEventListener('input', e => {inputData.message =e.target.value})
-// formEl.addEventListener('submit', onSubmitClick )
-
-// console.log(' -->',emailDataEl.value );
-// console.log(' -->',messageDataEl );
-
-
-// function onSubmitClick (event){
-//     event.preventDefault()
-//     event.target.reset ()
-//     console.log(' -->', inputData );
+window.addEventListener(
+    'DOMContentLoaded',
+    handleDomLoaded
+  );
     
 
-// }
-// localStorage.setItem("feedback-form-sate",JSON.stringify(inputData) )
 
 
-// inputData[event.target.name]=event.target.value
+// formEl.value = localStorage.getItem ('feedback-form-sate' )
+// console.log(' -->', formEl.value );
+
+
+
+
+    
+
