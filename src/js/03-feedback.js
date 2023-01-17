@@ -27,6 +27,16 @@ function inputHandler (event){
 
 formEl.addEventListener('input', throttle(inputHandler, 500))
 
+
+function submitHandler (event){
+  event.preventDefault();
+  event.currentTarget.reset();
+  localStorage.removeItem('feedback-form-sate');
+  inputData = '';
+}
+formEl.addEventListener('submit',submitHandler )
+
+
 const handleDomLoaded = () => {
 const localStorageDataSet = 
 JSON.parse(localStorage.getItem('feedback-form-sate'))
