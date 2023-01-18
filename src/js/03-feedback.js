@@ -32,7 +32,7 @@ function submitHandler (event){
   event.preventDefault();
   event.currentTarget.reset();
   localStorage.removeItem('feedback-form-sate');
-  inputData = '';
+  inputData = {};
 }
 formEl.addEventListener('submit',submitHandler )
 
@@ -57,9 +57,6 @@ window.addEventListener(
     
 
 
-
-// formEl.value = localStorage.getItem ('feedback-form-sate' )
-// console.log(' -->', formEl.value );
 
 
 
