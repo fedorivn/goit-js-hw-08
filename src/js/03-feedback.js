@@ -44,7 +44,7 @@ JSON.parse(localStorage.getItem('feedback-form-sate'))
 
 
 if (localStorageDataSet) {
-emailInput.value = localStorageDataSet.email
+emailInput.value = localStorageDataSet.email || ''
 textareaInput.value =localStorageDataSet.message || ''
 
 }}
